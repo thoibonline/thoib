@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thoyyibul Haq · Portfolio</title>
+<meta name="description" content="Personal profile: who I am, the industries I've worked in, my qualities and professional milestones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07060b; --bg2:#0e0c16; --ink:#f4f1fa; --mute:#9b97ab; --line:rgba(255,255,255,.12);
+  --violet:#a78bfa; --mint:#6ee7c8; --rose:#f0abfc;
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'Space Grotesk',monospace;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+em{font-family:var(--serif);font-style:italic;font-weight:300;background:linear-gradient(100deg,var(--violet),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(2.2rem,5.5vw,4.6rem)}
+section{padding:clamp(80px,12vw,160px) var(--pad);position:relative}
+.wrap{max-width:1280px;margin:0 auto}
+
+/* aurora background */
+.aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.28;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vw;height:46vw;background:var(--violet);left:-10vw;top:-10vw}
+.aurora i:nth-child(2){width:40vw;height:40vw;background:var(--mint);right:-12vw;top:30vh;animation-delay:-8s;opacity:.18}
+.aurora i:nth-child(3){width:34vw;height:34vw;background:var(--rose);left:30vw;bottom:-14vw;animation-delay:-14s;opacity:.15}
+@keyframes drift{to{transform:translate(8vw,6vh) scale(1.15)}}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;text-align:center;transition:opacity .9s ease,visibility .9s}
+#intro.done{opacity:0;visibility:hidden}
+#intro h1{font-size:clamp(3rem,10vw,8rem)}
+#intro .stars{letter-spacing:.6em;color:var(--violet);margin:1.5rem 0;animation:tw 1.6s infinite alternate}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+#intro button{margin-top:2rem;background:none;border:0;color:var(--mute);font:inherit;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);transition:.4s}
+nav.scrolled{background:rgba(7,6,11,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:1.15rem}
+.brand small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+.links{display:flex;gap:30px;align-items:center;font-size:.9rem}
+.links a:not(.cta){color:var(--mute);transition:.3s}.links a:not(.cta):hover{color:var(--ink)}
+.cta{border:1px solid var(--line);padding:10px 20px;border-radius:99px;transition:.3s}
+.cta:hover{background:var(--ink);color:var(--bg)}
+@media(max-width:820px){.links a:not(.cta){display:none}}
+
+/* photo slots */
+.slot{position:relative;overflow:hidden;background:linear-gradient(135deg,#17142a,#0b0a12);border-radius:22px;cursor:pointer}
+.slot img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.slot:hover img{transform:scale(1.04)}
+.slot .add{position:absolute;inset:0;display:none;place-items:center;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding:20px}
+.slot.empty .add{display:grid}.slot.empty img{display:none}
+.slot .chg{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:99px;opacity:0;transition:.3s}
+.slot:hover .chg{opacity:1}.slot.empty .chg{display:none}
+
+/* hero */
+#top{min-height:100svh;display:grid;align-items:center;padding-top:120px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,80px);align-items:center}
+.hero h1{font-size:clamp(3.2rem,9vw,8.4rem);margin:18px 0 28px}
+.hero p.lead{font-size:clamp(1.05rem,1.6vw,1.35rem);color:#cfcadc;max-width:30ch}
+.hero .btns{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 28px;border-radius:99px;background:var(--ink);color:var(--bg);font-weight:500;transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(167,139,250,.4)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.hero .slot{aspect-ratio:4/5;box-shadow:0 0 120px rgba(167,139,250,.25)}
+.ticker{margin-top:70px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero .slot{order:-1;max-height:60vh;aspect-ratio:1}}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;background:var(--bg2)}
+.marquee div{display:flex;gap:60px;width:max-content;animation:mq 38s linear infinite;font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.4rem);font-style:italic;color:var(--mute)}
+.marquee span::after{content:"✦";margin-left:60px;color:var(--violet);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:start}
+.sticky{position:sticky;top:110px}
+.sticky .slot{aspect-ratio:3/4}
+.chap{padding:0 0 clamp(60px,10vw,130px);border-bottom:1px solid var(--line);margin-bottom:clamp(40px,6vw,80px)}
+.chap:last-child{border:0;margin:0;padding:0}
+.chap h2{font-size:clamp(2rem,4.4vw,3.6rem);margin:12px 0 18px}
+.chap p{color:#cfcadc;font-size:1.08rem;max-width:46ch}
+@media(max-width:860px){.story{grid-template-columns:1fr}.sticky{position:static}}
+
+/* statement */
+.statement{text-align:center}
+.statement h2{max-width:18ch;margin:18px auto 22px}
+.statement p{color:var(--mute);font-size:1.15rem}
+
+/* milestone / work cards */
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.head h2{margin-top:14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;border:1px solid var(--line);border-radius:22px;padding:30px;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));overflow:hidden;transition:.5s}
+.card::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at var(--mx,30%) var(--my,0%),rgba(167,139,250,.3),transparent 45%);opacity:0;transition:.5s}
+.card:hover{transform:translateY(-8px);border-color:rgba(167,139,250,.5)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.card .no{font-family:var(--mono);color:var(--mint);font-size:.8rem}
+.card h3{font-size:1.9rem;margin:14px 0 10px}
+.card p{color:var(--mute);font-size:.98rem}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tags span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:5px 10px;border-radius:99px;color:var(--mute)}
+@media(max-width:960px){.cards{grid-template-columns:1fr 1fr}}@media(max-width:620px){.cards{grid-template-columns:1fr}}
+
+/* about */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,100px);align-items:center}
+.about .slot{aspect-ratio:4/5}
+.about h2{margin:14px 0 24px}
+.about p{color:#cfcadc;font-size:1.1rem;margin-bottom:18px;max-width:50ch}
+.pillars{margin-top:36px;border-top:1px solid var(--line)}
+.pillar{display:grid;grid-template-columns:60px 1fr;gap:10px;padding:20px 0;border-bottom:1px solid var(--line)}
+.pillar b{font-family:var(--mono);font-weight:400;color:var(--violet);font-size:.8rem;padding-top:6px}
+.pillar h3{font-size:1.6rem}.pillar p{margin:4px 0 0;color:var(--mute);font-size:.98rem}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+
+/* qualities */
+.quals{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.q{background:var(--bg);padding:34px 26px;transition:.4s}.q:hover{background:var(--bg2)}
+.q .ic{font-size:1.6rem;color:var(--mint);margin-bottom:26px;display:block}
+.q h3{font-size:1.4rem;margin-bottom:8px}.q p{color:var(--mute);font-size:.92rem}
+@media(max-width:960px){.quals{grid-template-columns:1fr 1fr}}@media(max-width:560px){.quals{grid-template-columns:1fr}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:20px 70px}
+.skill .row{display:flex;justify-content:space-between;font-size:.95rem;margin-bottom:10px}
+.bar{height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--mint));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.skill.in .bar i{width:var(--v)}
+@media(max-width:760px){.skills{grid-template-columns:1fr}}
+
+/* timeline */
+.timeline{position:relative;margin-left:8px;border-left:1px solid var(--line)}
+.ev{position:relative;padding:0 0 60px 40px}
+.ev::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--mint);box-shadow:0 0 0 5px rgba(110,231,200,.12)}
+.ev .yr{font-family:var(--mono);color:var(--mint);font-size:.8rem;letter-spacing:.16em}
+.ev h3{font-size:clamp(1.6rem,3vw,2.3rem);margin:6px 0}
+.ev p{color:var(--mute);max-width:60ch}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(3rem,7vw,6rem);line-height:1}
+.stat span{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr;row-gap:40px}}
+
+/* FAQ */
+.faq{max-width:900px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:24px 0}
+.faq summary{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.8rem);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--violet);transition:.3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--mute);margin-top:14px;max-width:62ch}
+
+/* contact */
+.contact{text-align:center;position:relative}
+.contact .slot{width:130px;height:130px;border-radius:50%;margin:0 auto 34px;border:2px solid var(--line)}
+.contact h2{font-size:clamp(3rem,9vw,8rem);margin:16px 0 30px}
+.mail{font-family:var(--serif);font-size:clamp(1.3rem,3vw,2.2rem);border-bottom:1px solid var(--violet);padding-bottom:4px}
+.socials{display:flex;gap:28px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.socials a{color:var(--mute);font-size:.9rem;transition:.3s}.socials a:hover{color:var(--mint)}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:30px var(--pad);border-top:1px solid var(--line)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.gallery .slot{aspect-ratio:4/5}
+.gallery figcaption{position:absolute;left:18px;bottom:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px #000;z-index:2}
+@media(max-width:700px){.gallery{grid-template-columns:1fr}}
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+
+<div id="intro">
+  <div>
+    <div class="label">Thoughtfully made. Beautifully felt.</div>
+    <div class="stars">✦ ✦ ✦ ✦ ✦</div>
+    <h1>A little <em>magic.</em></h1>
+    <button id="skip">Skip intro ↗</button>
+  </div>
+</div>
+
+<nav id="nav">
+  <a href="#top" class="brand"><span data-k="name"></span><small data-k="role"></small></a>
+  <div class="links">
+    <a href="#milestones">Milestones</a><a href="#industries">Industries</a><a href="#about">About</a><a href="#journey">Journey</a>
+    <a href="#contact" class="cta">Let’s talk</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <div class="label"><span data-k="name"></span> — <span data-k="role"></span></div>
+        <h1>Driven<br>by <em>purpose.</em></h1>
+        <p class="lead" data-k="tagline"></p>
+        <div class="btns"><a class="btn" href="#milestones">Explore my work</a><a class="btn ghost" href="#about">Who I am</a></div>
+      </div>
+      <figure class="slot" data-slot="hero" title="Click to add your photo">
+        <img alt="Portrait" src="images/portrait-closeup.jpg">
+        <div class="add">✦<br>Click to add<br>your close-up portrait</div>
+        <span class="chg">Change photo</span>
+      </figure>
+    </div>
+    <div class="ticker label"><span>✦ The human behind the profile</span><span data-k="focus"></span><span data-k="location"></span></div>
+  </div>
+</section>
+
+<div class="marquee"><div id="mq"></div></div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="wrap">
+    <div class="label" style="margin-bottom:50px">A little of my story</div>
+    <div class="story">
+      <div class="sticky">
+        <figure class="slot" data-slot="story" title="Click to add your photo">
+          <img alt="Portrait at the table" src="images/portrait-sunglasses.jpg">
+          <div class="add">✦<br>Click to add<br>your lifestyle portrait</div>
+          <span class="chg">Change photo</span>
+        </figure>
+      </div>
+      <div>
+        <div class="chap rv"><div class="label">The human · <span data-k="s1label"></span></div><h2>Human by <em>design.</em></h2><p data-k="s1"></p></div>
+        <div class="chap rv"><div class="label">The professional · <span data-k="s2label"></span></div><h2>Skill by <em>practice.</em></h2><p data-k="s2"></p></div>
+        <div class="chap rv"><div class="label">The person · <span data-k="s3label"></span></div><h2>More than <em>a title.</em></h2><p data-k="s3"></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="wrap rv">
+    <div class="label">Good work makes sense. Great work makes you feel.</div>
+    <h2>Equal parts effort, instinct &amp; <em>experience.</em></h2>
+    <p>From the first idea to the final detail — I plan it, I do it, I make it count.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap stats rv" id="stats"></div>
+</section>
+
+<!-- MILESTONES -->
+<section id="milestones">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">01 / Professional milestones</div><h2>Moments that <em>shaped me.</em></h2></div><p style="color:var(--mute);max-width:28ch">Different worlds. The same attention to detail.</p></div>
+    <div class="cards" id="milestoneCards"></div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">02 / Industries</div><h2>Where I’ve <em>worked.</em></h2></div><p style="color:var(--mute);max-width:30ch">Sectors I’ve served and the ones I’m building in today.</p></div>
+    <div class="cards" id="industryCards"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <figure class="slot rv" data-slot="about" title="Click to add your photo">
+      <img alt="Professional portrait" src="images/portrait-professional.jpg">
+      <div class="add">✦<br>Click to add<br>your professional photo</div>
+      <span class="chg">Change photo</span>
+    </figure>
+    <div class="rv">
+      <div class="label">03 / The person behind the work</div>
+      <h2>A sharp mind. A steady hand. <em>A curious soul.</em></h2>
+      <p data-k="about1"></p>
+      <p data-k="about2"></p>
+      <div class="pillars" id="pillars"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITIES -->
+<section>
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">04 / Qualities</div><h2>What you can <em>count on.</em></h2></div></div>
+    <div class="quals rv" id="quals"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">05 / Abilities</div><h2>Tools of the <em>trade.</em></h2></div></div>
+    <div class="skills rv" id="skills"></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="journey">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">06 / Career journey</div><h2>The road <em>so far.</em></h2></div></div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head rv" style="justify-content:center;text-align:center"><div><div class="label">Before we begin</div><h2>A little <em>clarity.</em></h2></div></div>
+    <div class="faq rv" id="faq"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">07 / Moments</div><h2>Recognition &amp; <em>presence.</em></h2></div><p style="color:var(--mute);max-width:30ch">Certificates, events and the person behind the profile.</p></div>
+    <div class="gallery rv">
+      <figure class="slot" data-slot="cert" title="Click to add your photo">
+        <img alt="Certificate presentation" src="images/certificate.jpg">
+        <div class="add">✦<br>Click to add<br>your certificate photo</div>
+        <figcaption>Certificate of participation</figcaption>
+        <span class="chg">Change photo</span>
+      </figure>
+      <figure class="slot" data-slot="window" title="Click to add your photo">
+        <img alt="Portrait by the window" src="images/portrait-window.jpg">
+        <div class="add">✦<br>Click to add<br>your window portrait</div>
+        <figcaption>Natural light</figcaption>
+        <span class="chg">Change photo</span>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap rv">
+    <figure class="slot" data-slot="contact" title="Click to add your photo">
+      <img alt="Avatar" src="images/avatar.jpg">
+      <div class="add">✦</div>
+      <span class="chg">Change</span>
+    </figure>
+    <div class="label">Have something in mind? Good things start with a conversation.</div>
+    <h2>Let’s make <em>something great.</em></h2>
+    <a class="mail" id="mail" href="#"></a>
+    <div class="socials" id="socials"></div>
+  </div>
+</section>
+
+<footer class="label"><span>© <span id="yr"></span> <span data-k="name"></span></span><span>Crafted with intention</span><a href="#top">Back to top ↑</a></footer>
+
+<input type="file" id="picker" accept="image/*" hidden>
+
+<script>
+/* =====================================================
+   EDIT YOUR DETAILS HERE — everything on the page
+   is filled from this one block.
+   ===================================================== */
+const P = {
+  name: "Thoyyibul Haq",
+  role: "Your Professional Title",
+  location: "Your City, Country",
+  focus: "Leadership · Strategy · Execution",
+  email: "you@example.com",
+  tagline: "I turn complex challenges into results that feel simple, clear and built to last.",
+  socials: [["LinkedIn ↗","https://linkedin.com/in/yourprofile"],["Instagram ↗","https://instagram.com/yourhandle"],["WhatsApp ↗","https://wa.me/0000000000"]],
+
+  s1label: "Where it began",
+  s1: "Write a few lines about your beginning — where you grew up, what first sparked your drive, and the values that still guide you today.",
+  s2label: "Years of experience",
+  s2: "Describe your professional path: the roles you've held, the teams you've led and the problems you're best at solving.",
+  s3label: "Beyond the job",
+  s3: "Share what shapes you outside work — your passions, discipline, interests and the way you show up for people.",
+
+  about1: "I'm a results-driven professional who combines strong discipline with a calm, thoughtful approach. I like to understand a problem deeply before moving — and then move with confidence.",
+  about2: "Replace this with your own summary: who you are, what you stand for, and what you want to build next.",
+
+  marquee: ["Leadership","Strategy","Operations","Business Development","Client Relations","Problem Solving","Team Building","Execution"],
+
+  stats: [["10+","Years of experience"],["5","Industries served"],["50+","Projects delivered"],["100%","Commitment"]],
+
+  pillars: [
+    ["01 /","Think it through.","Analysis, planning and clear decision-making."],
+    ["02 /","Make it happen.","Disciplined execution that turns plans into outcomes."],
+    ["03 /","Bring people along.","Communication, trust and leadership that lasts."]
+  ],
+
+  milestones: [
+    ["Milestone title one","2024","Describe a major achievement — what you did, the scale, and the result it delivered.",["Achievement","Leadership"]],
+    ["Milestone title two","2022","Describe a promotion, launch, award or project you're proud of.",["Growth","Delivery"]],
+    ["Milestone title three","2020","Describe a challenge you overcame and what it taught you.",["Resilience","Strategy"]],
+    ["Milestone title four","2018","Describe a turning point in your career.",["Career","Impact"]],
+    ["Milestone title five","2016","Describe a certification, qualification or key learning moment.",["Education","Skills"]],
+    ["Milestone title six","2014","Describe where your professional journey began.",["Beginnings","Foundation"]]
+  ],
+
+  industries: [
+    ["Industry one","Current","What you do in this sector and the value you bring.",["Present","Focus"]],
+    ["Industry two","Past","What you did in this sector and what you achieved.",["Experience"]],
+    ["Industry three","Past","What you did in this sector and what you achieved.",["Experience"]]
+  ],
+
+  quals: [
+    ["◐","Disciplined","Consistent effort, every day, without being asked."],
+    ["✦","Adaptable","Comfortable in new industries, teams and pressure."],
+    ["◈","Detail-minded","Quality lives in the small things — I notice them."],
+    ["❖","People-first","Trust and respect before targets and titles."]
+  ],
+
+  skills: [["Leadership & team management",92],["Strategic planning",88],["Communication & negotiation",90],["Problem solving",94],["Project delivery",89],["Client relationships",91]],
+
+  timeline: [
+    ["2024 — Present","Current role · Company","What you're doing now, your responsibilities and your biggest wins so far."],
+    ["2019 — 2024","Previous role · Company","Key responsibilities, team size, results and growth."],
+    ["2014 — 2019","Earlier role · Company","Where you built your foundations and first big lessons."],
+    ["Education","Degree · Institution","Your education, certifications and ongoing learning."]
+  ],
+
+  faq: [
+    ["What industries have you worked in?","List the sectors you've worked in and the common thread — what you bring to each."],
+    ["What are you best at?","Your strongest abilities, in your own words — leadership, delivery, relationships or something unique."],
+    ["How do you like to work with others?","Describe your working style: communication rhythm, feedback, collaboration and expectations."],
+    ["Are you open to new opportunities?","Say what kind of roles, partnerships or conversations you welcome."]
+  ]
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+document.querySelectorAll('[data-k]').forEach(e=>e.textContent=P[e.dataset.k]);
+$('#yr').textContent=new Date().getFullYear();
+$('#mq').innerHTML=[...P.marquee,...P.marquee].map(t=>`<span>${t}</span>`).join('');
+$('#stats').innerHTML=P.stats.map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('');
+const card=(c,i)=>`<article class="card rv"><div><span class="no">${String(i+1).padStart(2,'0')} · ${c[1]}</span><h3>${c[0]}</h3><p>${c[2]}</p></div><div class="tags">${c[3].map(t=>`<span>${t}</span>`).join('')}</div></article>`;
+$('#milestoneCards').innerHTML=P.milestones.map(card).join('');
+$('#industryCards').innerHTML=P.industries.map(card).join('');
+$('#pillars').innerHTML=P.pillars.map(p=>`<div class="pillar"><b>${p[0]}</b><div><h3>${p[1]}</h3><p>${p[2]}</p></div></div>`).join('');
+$('#quals').innerHTML=P.quals.map(q=>`<div class="q"><span class="ic">${q[0]}</span><h3>${q[1]}</h3><p>${q[2]}</p></div>`).join('');
+$('#skills').innerHTML=P.skills.map(s=>`<div class="skill"><div class="row"><span>${s[0]}</span><span>${s[1]}%</span></div><div class="bar"><i style="--v:${s[1]}%"></i></div></div>`).join('');
+$('#timeline').innerHTML=P.timeline.map(t=>`<div class="ev rv"><div class="yr">${t[0]}</div><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('');
+$('#faq').innerHTML=P.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
+$('#mail').textContent=P.email;$('#mail').href='mailto:'+P.email;
+$('#socials').innerHTML=P.socials.map(s=>`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join('');
+
+/* ---------- intro / nav / reveal ---------- */
+const intro=$('#intro');
+const closeIntro=()=>intro.classList.add('done');
+$('#skip').onclick=closeIntro;setTimeout(closeIntro,2600);
+addEventListener('scroll',()=>$('#nav').classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,.skill').forEach(e=>io.observe(e));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')}));
+
+/* ---------- photo slots: click to add / change, remembered in browser ---------- */
+const picker=$('#picker');let active=null;
+const store={get:k=>{try{return localStorage.getItem('photo_'+k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem('photo_'+k,v)}catch(e){}}};
+document.querySelectorAll('.slot').forEach(s=>{
+  const img=s.querySelector('img'),k=s.dataset.slot,saved=store.get(k);
+  if(saved){img.src=saved;s.classList.remove('empty')}
+  img.addEventListener('error',()=>{if(!store.get(k))s.classList.add('empty')});
+  if(img.complete&&img.naturalWidth===0&&!saved)s.classList.add('empty');
+  s.addEventListener('click',()=>{active=s;picker.value='';picker.click()});
+});
+picker.addEventListener('change',()=>{
+  const f=picker.files[0];if(!f||!active)return;
+  const r=new FileReader();r.onload=()=>{
+    const im=new Image();im.onload=()=>{
+      const m=1400,sc=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');
+      c.width=im.width*sc;c.height=im.height*sc;c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      const url=c.toDataURL('image/jpeg',.86);
+      active.querySelector('img').src=url;active.classList.remove('empty');store.set(active.dataset.slot,url);
+    };im.src=r.result};
+  r.readAsDataURL(f);
+});
+</script>
+</body>
+</html>
